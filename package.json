@@ -1,0 +1,32 @@
+{
+  "name": "ts-data-annotations",
+  "version": "0.0.2",
+  "description": "",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ./src/tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gatimus/ts-data-annotations.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gatimus/ts-data-annotations/issues"
+  },
+  "homepage": "https://github.com/gatimus/ts-data-annotations#readme",
+  "devDependencies": {
+    "@angular/common": "^4.0.1",
+    "@angular/core": "^4.0.1",
+    "@angular/http": "^4.0.1",
+    "@angular/material": "^2.0.0-beta.2",
+    "rxjs": "^5.0.1",
+    "typescript": "^2.2.2",
+    "zone.js": "^0.8.5"
+  },
+  "peerDependencies": {
+    "reflect-metadata": "^0.1.10"
+  }
+}
