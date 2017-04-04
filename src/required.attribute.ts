@@ -1,4 +1,5 @@
 import { MdInputDirective } from '@angular/material';
+import { parseCSParameters } from './parse-cs-parameters';
 import { ValidationAttribute, AttributeRenderer } from './validation.attribute';
 
 /**
@@ -30,3 +31,7 @@ export function Required() {
     return Reflect.metadata(RequiredAttribute, new RequiredAttribute());
 }
 
+export function TypeWriterRequired(csParameters: string) {
+    // TODO get extra properties
+    return Required();
+}

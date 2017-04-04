@@ -19,3 +19,7 @@ export declare function Required(): {
     (target: Function): void;
     (target: Object, propertyKey: string | symbol): void;
 };
+export declare function TypeWriterRequired(csParameters: string): {
+    (target: Function): void;
+    (target: Object, propertyKey: string | symbol): void;
+};
