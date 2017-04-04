@@ -1,6 +1,6 @@
 # ts-data-annotations
 
-Typescript / ES6 decorators compattble with .net's `System.ComponentModel.DataAnnotations`. Helpfull for generating Typscript models from C#.
+Typescript / ES6 decorators compatible with .net's `System.ComponentModel.DataAnnotations`. Helpful for generating Typscript models from C#.
 
 ## Basic Usage
 
