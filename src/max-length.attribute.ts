@@ -1,4 +1,5 @@
 import { MdInputDirective } from '@angular/material';
+import { parseCSParameters } from './parse-cs-parameters';
 import { ValidationAttribute, AttributeRenderer } from './validation.attribute';
 
 /**
@@ -47,4 +48,13 @@ export function MaxLength()
 export function MaxLength(length: number)
 export function MaxLength(length?: number) {
     return Reflect.metadata(MaxLengthAttribute, new MaxLengthAttribute(length));
+}
+
+export function TypeWriterMaxLength(csParameters: string) {
+    let parameters =  parseCSParameters(csParameters);
+    if (parameters.parameters || parameters.parameters.length) {
+        let length = parseInt(parameters.parameters[0], 10);
+        return MaxLength(length);
+    }
+    return MaxLength();
 }
