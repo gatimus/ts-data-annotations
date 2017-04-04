@@ -1,4 +1,5 @@
 import { MdInputDirective } from '@angular/material';
+import { parseCSParameters } from './parse-cs-parameters';
 import { ValidationAttribute, AttributeRenderer } from './validation.attribute';
 import { DataType } from './data-type';
 
@@ -96,3 +97,10 @@ export class DataTypeAttribute extends ValidationAttribute {
 // export function DataType(param: DataType | string) {
 //     return Reflect.metadata(DataTypeAttribute, new DataTypeAttribute(param));
 // }
+
+export function TypewriterDataType(csParameters: string) {
+    let parameters = parseCSParameters(csParameters);
+    let namespacePath = parameters.parameters[0].split('.');
+    let dataType = namespacePath[namespacePath.length - 1];
+    return Reflect.metadata(DataTypeAttribute, new DataTypeAttribute(DataType[dataType]));
+}

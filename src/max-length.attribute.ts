@@ -50,7 +50,7 @@ export function MaxLength(length?: number) {
     return Reflect.metadata(MaxLengthAttribute, new MaxLengthAttribute(length));
 }
 
-export function TypeWriterMaxLength(csParameters: string) {
+export function TypewriterMaxLength(csParameters: string) {
     let parameters =  parseCSParameters(csParameters);
     if (parameters.parameters || parameters.parameters.length) {
         let length = parseInt(parameters.parameters[0], 10);

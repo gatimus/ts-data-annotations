@@ -1,8 +1,11 @@
 import 'reflect-metadata';
 export { DataTypeAttribute } from './data-type.attribute';
 export { DataType } from './data-type';
-export { EmailAddressAttribute, EmailAddress } from './email-address.attribute';
+export { EmailAddressAttribute, EmailAddress, TypewriterEmailAddress } from './email-address.attribute';
 export { KeyAttribute, Key } from './key.attribute';
-export { MaxLengthAttribute, MaxLength } from './max-length.attribute';
-export { RequiredAttribute, Required } from './required.attribute';
+export { MaxLengthAttribute, MaxLength, TypewriterMaxLength } from './max-length.attribute';
+export { RequiredAttribute, Required, TypewriterRequired } from './required.attribute';
 export { TimestampAttribute, Timestamp } from './timestamp.attribute';
+export { CompareAttribute, Compare, TypewriterCompare} from './compare.attribute';
+export { DisplayAttribute, Display, TypewriterDisplay} from './display.attribute';
+export { StringLengthAttribute, StringLength, TypewriterStringLength} from './string-length.attribute';

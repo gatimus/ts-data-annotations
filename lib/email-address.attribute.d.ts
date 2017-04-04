@@ -6,7 +6,7 @@ export declare function EmailAddress(): {
     (target: Function): void;
     (target: Object, propertyKey: string | symbol): void;
 };
-export declare function TypeWriterEmailAddress(csParameters: string): {
+export declare function TypewriterEmailAddress(csParameters: string): {
     (target: Function): void;
     (target: Object, propertyKey: string | symbol): void;
 };

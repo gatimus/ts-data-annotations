@@ -12,7 +12,7 @@ export function EmailAddress() {
     return Reflect.metadata(EmailAddressAttribute, new EmailAddressAttribute());
 }
 
-export function TypeWriterEmailAddress(csParameters: string) {
+export function TypewriterEmailAddress(csParameters: string) {
     // TODO get extra properties
     return EmailAddress();
 }

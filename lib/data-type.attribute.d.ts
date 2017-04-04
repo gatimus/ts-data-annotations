@@ -21,3 +21,7 @@ export declare class DataTypeAttribute extends ValidationAttribute {
     RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer): any;
     RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer, mdinput: MdInputDirective): any;
 }
+export declare function TypewriterDataType(csParameters: string): {
+    (target: Function): void;
+    (target: Object, propertyKey: string | symbol): void;
+};

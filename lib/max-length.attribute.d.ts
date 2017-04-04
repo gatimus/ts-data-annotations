@@ -30,4 +30,4 @@ export declare function MaxLength(): any;
  * Specifies the maximum length of array/string data allowed in a property.
  */
 export declare function MaxLength(length: number): any;
-export declare function TypeWriterMaxLength(csParameters: string): any;
+export declare function TypewriterMaxLength(csParameters: string): any;

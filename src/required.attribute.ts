@@ -31,7 +31,7 @@ export function Required() {
     return Reflect.metadata(RequiredAttribute, new RequiredAttribute());
 }
 
-export function TypeWriterRequired(csParameters: string) {
+export function TypewriterRequired(csParameters: string) {
     // TODO get extra properties
     return Required();
 }
