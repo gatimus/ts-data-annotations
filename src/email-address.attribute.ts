@@ -1,10 +1,10 @@
 import { MdInputDirective } from '@angular/material';
 import { DataTypeAttribute } from './data-type.attribute';
-import { DataType } from './data-type';
+import { DataTypeEnum } from './data-type';
 
 export class EmailAddressAttribute  extends DataTypeAttribute {
     constructor() {
-        super(DataType.EmailAddress);
+        super(DataTypeEnum.EmailAddress);
     }
 }
 

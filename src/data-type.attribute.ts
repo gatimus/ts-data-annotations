@@ -2,10 +2,10 @@ import { MdInputDirective } from '@angular/material';
 import { parseCSParameters } from './parse-cs-parameters';
 import { _ValidationAttribute, ValidationAttribute, AttributeRenderer } from './validation.attribute';
 import { DisplayFormatAttribute } from './display-format.attribute';
-import { DataType } from './data-type';
+import { DataTypeEnum } from './data-type';
 
 export interface _DataTypeAttribute extends _ValidationAttribute {
-    DataType?: DataType;
+    DataType?: DataTypeEnum;
     CustomDataType?: string;
     DisplayFormat?: DisplayFormatAttribute;
 }
@@ -17,7 +17,7 @@ export interface _DataTypeAttribute extends _ValidationAttribute {
  */
 export class DataTypeAttribute extends ValidationAttribute {
 
-    public DataType: DataType;
+    public DataType: DataTypeEnum;
 
     public CustomDataType: string;
 
@@ -27,16 +27,16 @@ export class DataTypeAttribute extends ValidationAttribute {
      * Constructor that accepts a data type enumeration
      * @param dataType The DataType enum value indicating the type to apply.
      */
-    constructor(dataType: DataType)
+    constructor(dataType: DataTypeEnum)
     /**
      * Constructor that accepts the string name of a custom data type
      * @param customDataType The string name of the custom data type.
      */
     constructor(customDataType: string)
-    constructor(param: DataType | string) {
+    constructor(param: DataTypeEnum | string) {
         super();
         if (typeof param == 'string') {
-            this.DataType = DataType.Custom;
+            this.DataType = DataTypeEnum.Custom;
             this.CustomDataType = param;
         } else {
             this.DataType = param;
@@ -44,50 +44,50 @@ export class DataTypeAttribute extends ValidationAttribute {
 
         let value: string;
         switch (this.DataType) {
-            case DataType.CreditCard:
+            case DataTypeEnum.CreditCard:
                 throw new Error('Not Implemented');
-            case DataType.Currency:
+            case DataTypeEnum.Currency:
                 throw new Error('Not Implemented');
-            case DataType.Custom:
+            case DataTypeEnum.Custom:
                 value = <string>param;
                 break;
-            case DataType.Date:
+            case DataTypeEnum.Date:
                 value = 'date';
                 break;
-            case DataType.DateTime:
+            case DataTypeEnum.DateTime:
                 value = 'datetime';
                 break;
-            case DataType.Duration:
+            case DataTypeEnum.Duration:
                 throw new Error('Not Implemented');
-            case DataType.EmailAddress:
+            case DataTypeEnum.EmailAddress:
                 value = 'email';
                 break;
-            case DataType.Html:
+            case DataTypeEnum.Html:
                 throw new Error('Not Implemented');
-            case DataType.ImageUrl:
+            case DataTypeEnum.ImageUrl:
                 value = 'url';
                 break;
-            case DataType.MultilineText:
+            case DataTypeEnum.MultilineText:
                 // TODO inforce textarea??
                 throw new Error('Not Implemented');
-            case DataType.Password:
+            case DataTypeEnum.Password:
                 value = 'password';
                 break;
-            case DataType.PhoneNumber:
+            case DataTypeEnum.PhoneNumber:
                 value = 'tel';
                 break;
-            case DataType.PostalCode:
+            case DataTypeEnum.PostalCode:
                 throw new Error('Not Implemented');
-            case DataType.Text:
+            case DataTypeEnum.Text:
                 value = 'text';
                 break;
-            case DataType.Time:
+            case DataTypeEnum.Time:
                 value = 'time';
                 break;
-            case DataType.Upload:
+            case DataTypeEnum.Upload:
                 value = 'file';
                 break;
-            case DataType.Url:
+            case DataTypeEnum.Url:
                 value = 'url';
                 break;
             default:
@@ -107,16 +107,19 @@ export class DataTypeAttribute extends ValidationAttribute {
     // }
 }
 
-// TODO DataType name conflict
-// export function DataType(dataType: DataType)
-// export function DataType(customDataType: string)
-// export function DataType(param: DataType | string) {
-//     return Reflect.metadata(DataTypeAttribute, new DataTypeAttribute(param));
-// }
+export function DataType(dataType: DataTypeEnum)
+export function DataType(customDataType: string)
+export function DataType(dataType: DataTypeEnum, properties: _DataTypeAttribute)
+export function DataType(customDataType: string, properties: _DataTypeAttribute)
+export function DataType(param: DataTypeEnum | string, properties: _DataTypeAttribute = {}) {
+    let attribute = new DataTypeAttribute(param as any);
+    Object.assign(attribute, properties);
+    return Reflect.metadata(DataTypeAttribute, attribute);
+}
 
 export function TypewriterDataType(csParameters: string) {
     let parameters = parseCSParameters(csParameters);
     let namespacePath = parameters.parameters[0].split('.');
     let dataType = namespacePath[namespacePath.length - 1];
-    return Reflect.metadata(DataTypeAttribute, new DataTypeAttribute(DataType[dataType]));
+    return Reflect.metadata(DataTypeAttribute, new DataTypeAttribute(DataTypeEnum[dataType]));
 }

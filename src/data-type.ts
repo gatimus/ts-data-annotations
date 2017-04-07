@@ -1,5 +1,5 @@
 
-export enum DataType {
+export enum DataTypeEnum {
     /**
      * Custom data type, not one of the static data types we know
      */
