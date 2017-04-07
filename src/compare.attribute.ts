@@ -1,12 +1,31 @@
+import { ValidationAttribute, AttributeRenderer } from './validation.attribute';
 
-export class CompareAttribute {
+export interface _CompareAttribute{
+    OtherProperty?: string;
+    OtherPropertyDisplayName?: string;
+}
+
+export class CompareAttribute extends ValidationAttribute {
+
+    public OtherProperty: string;
+
+    public OtherPropertyDisplayName: string;
+
+    constructor(otherProperty: string) {
+        super('', '');
+        this.OtherProperty = otherProperty;
+    }
 
 }
 
-export function Compare() {
-    return Reflect.metadata(CompareAttribute, new CompareAttribute());
+export function Compare(otherProperty: string)
+export function Compare(otherProperty: string, properties: _CompareAttribute)
+export function Compare(otherProperty: string, properties: _CompareAttribute = {}) {
+    let attribute = new CompareAttribute(otherProperty);
+    Object.assign(attribute, properties);
+    return Reflect.metadata(CompareAttribute, attribute);
 }
 
 export function TypewriterCompare(csParameters: string) {
-    return Compare();
+    return Compare('');
 }

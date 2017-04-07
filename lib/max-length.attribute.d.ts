@@ -1,5 +1,8 @@
 import { MdInputDirective } from '@angular/material';
 import { ValidationAttribute, AttributeRenderer } from './validation.attribute';
+export interface _MaxLengthAttribute {
+    Length?: number;
+}
 /**
  * Specifies the maximum length of array/string data allowed in a property.
  */
@@ -22,12 +25,7 @@ export declare class MaxLengthAttribute extends ValidationAttribute {
     RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer): any;
     RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer, mdinput: MdInputDirective): any;
 }
-/**
- * Specifies the maximum length of array/string data allowed in a property.
- */
 export declare function MaxLength(): any;
-/**
- * Specifies the maximum length of array/string data allowed in a property.
- */
 export declare function MaxLength(length: number): any;
+export declare function MaxLength(length: number, properties: _MaxLengthAttribute): any;
 export declare function TypewriterMaxLength(csParameters: string): any;

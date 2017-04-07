@@ -16,6 +16,9 @@
     "outDir": "../lib",
     "sourceMap": true,
     "target": "es5",
+    "types": [
+      "reflect-metadata"
+    ],
     "typeRoots": [
       "../node_modules/@types"
     ]

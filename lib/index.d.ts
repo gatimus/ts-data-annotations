@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 export { DataTypeAttribute, TypewriterDataType } from './data-type.attribute';
 export { DataType } from './data-type';
 export { EmailAddressAttribute, EmailAddress, TypewriterEmailAddress } from './email-address.attribute';

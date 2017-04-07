@@ -2,10 +2,20 @@ import { MdInputDirective } from '@angular/material';
 import { parseCSParameters } from './parse-cs-parameters';
 import { ValidationAttribute, AttributeRenderer } from './validation.attribute';
 
+export interface _RequiredAttribute {
+    AllowEmptyStrings?: boolean;
+}
+
 /**
  * Validation attribute to indicate that a property field or parameter is required.
  */
 export class RequiredAttribute extends ValidationAttribute {
+
+    /**
+     * Gets or sets a flag indicating whether the attribute should allow empty strings.
+     */
+    public AllowEmptyStrings: boolean;
+
     /**
      * Default constructor.
      */
@@ -27,8 +37,12 @@ export class RequiredAttribute extends ValidationAttribute {
 /**
  * Validation attribute to indicate that a property field or parameter is required.
  */
-export function Required() {
-    return Reflect.metadata(RequiredAttribute, new RequiredAttribute());
+export function Required()
+export function Required(properties: _RequiredAttribute)
+export function Required(properties: _RequiredAttribute = {}) {
+    let attribute = new RequiredAttribute();
+    Object.assign(attribute, properties);
+    return Reflect.metadata(RequiredAttribute, attribute);
 }
 
 export function TypewriterRequired(csParameters: string) {
