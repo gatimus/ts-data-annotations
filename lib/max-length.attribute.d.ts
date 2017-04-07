@@ -1,6 +1,5 @@
-import { MdInputDirective } from '@angular/material';
-import { ValidationAttribute, AttributeRenderer } from './validation.attribute';
-export interface _MaxLengthAttribute {
+import { _ValidationAttribute, ValidationAttribute } from './validation.attribute';
+export interface _MaxLengthAttribute extends _ValidationAttribute {
     Length?: number;
 }
 /**
@@ -21,9 +20,6 @@ export declare class MaxLengthAttribute extends ValidationAttribute {
      * Initializes a new instance of the MaxLengthAttribute class.
      */
     constructor(length: number);
-    RenderHTMLAttribute(element: HTMLInputElement): any;
-    RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer): any;
-    RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer, mdinput: MdInputDirective): any;
 }
 export declare function MaxLength(): any;
 export declare function MaxLength(length: number): any;

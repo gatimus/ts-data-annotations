@@ -1,7 +1,14 @@
 import { MdInputDirective } from '@angular/material';
 import { parseCSParameters } from './parse-cs-parameters';
-import { ValidationAttribute, AttributeRenderer } from './validation.attribute';
+import { _ValidationAttribute, ValidationAttribute, AttributeRenderer } from './validation.attribute';
+import { DisplayFormatAttribute } from './display-format.attribute';
 import { DataType } from './data-type';
+
+export interface _DataTypeAttribute extends _ValidationAttribute {
+    DataType?: DataType;
+    CustomDataType?: string;
+    DisplayFormat?: DisplayFormatAttribute;
+}
 
 /**
  * Allows for clarification of the DataType represented by a given
@@ -9,6 +16,13 @@ import { DataType } from './data-type';
  * or DataType.Url)
  */
 export class DataTypeAttribute extends ValidationAttribute {
+
+    public DataType: DataType;
+
+    public CustomDataType: string;
+
+    public DisplayFormat: DisplayFormatAttribute;
+
     /**
      * Constructor that accepts a data type enumeration
      * @param dataType The DataType enum value indicating the type to apply.
@@ -20,14 +34,16 @@ export class DataTypeAttribute extends ValidationAttribute {
      */
     constructor(customDataType: string)
     constructor(param: DataType | string) {
-        let dataType: DataType;
-        let value: string;
+        super();
         if (typeof param == 'string') {
-            dataType = DataType.Custom;
+            this.DataType = DataType.Custom;
+            this.CustomDataType = param;
         } else {
-            dataType = param;
+            this.DataType = param;
         }
-        switch (dataType) {
+
+        let value: string;
+        switch (this.DataType) {
             case DataType.CreditCard:
                 throw new Error('Not Implemented');
             case DataType.Currency:
@@ -77,18 +93,18 @@ export class DataTypeAttribute extends ValidationAttribute {
             default:
                 throw new Error('Not Implemented');
         }
-        super('type', value);
+        
     }
-    public RenderHTMLAttribute(element: HTMLInputElement)
-    public RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer)
-    public RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer, mdinput: MdInputDirective)
-    public RenderHTMLAttribute(element: HTMLInputElement, renderer?: AttributeRenderer, mdinput?: MdInputDirective): void {
-        if (!!mdinput) {
-            mdinput.type = this.value;
-        } else {
-            super.RenderHTMLAttribute(element, renderer, mdinput);
-        }
-    }
+    // public RenderHTMLAttribute(element: HTMLInputElement)
+    // public RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer)
+    // public RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer, mdinput: MdInputDirective)
+    // public RenderHTMLAttribute(element: HTMLInputElement, renderer?: AttributeRenderer, mdinput?: MdInputDirective): void {
+    //     if (!!mdinput) {
+    //         mdinput.type = this.value;
+    //     } else {
+    //         super.RenderHTMLAttribute(element, renderer, mdinput);
+    //     }
+    // }
 }
 
 // TODO DataType name conflict

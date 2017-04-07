@@ -1,6 +1,6 @@
-import { ValidationAttribute, AttributeRenderer } from './validation.attribute';
+import { _ValidationAttribute, ValidationAttribute, AttributeRenderer } from './validation.attribute';
 
-export interface _CompareAttribute{
+export interface _CompareAttribute extends _ValidationAttribute {
     OtherProperty?: string;
     OtherPropertyDisplayName?: string;
 }
@@ -12,7 +12,7 @@ export class CompareAttribute extends ValidationAttribute {
     public OtherPropertyDisplayName: string;
 
     constructor(otherProperty: string) {
-        super('', '');
+        super();
         this.OtherProperty = otherProperty;
     }
 

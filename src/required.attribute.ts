@@ -1,8 +1,8 @@
 import { MdInputDirective } from '@angular/material';
 import { parseCSParameters } from './parse-cs-parameters';
-import { ValidationAttribute, AttributeRenderer } from './validation.attribute';
+import { _ValidationAttribute, ValidationAttribute, AttributeRenderer } from './validation.attribute';
 
-export interface _RequiredAttribute {
+export interface _RequiredAttribute extends _ValidationAttribute {
     AllowEmptyStrings?: boolean;
 }
 
@@ -20,18 +20,18 @@ export class RequiredAttribute extends ValidationAttribute {
      * Default constructor.
      */
     constructor() {
-        super('required', true);
+        super();
     }
-    public RenderHTMLAttribute(element: HTMLInputElement)
-    public RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer)
-    public RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer, mdinput: MdInputDirective)
-    public RenderHTMLAttribute(element: HTMLInputElement, renderer?: AttributeRenderer, mdinput?: MdInputDirective): void {
-        if (!!mdinput) {
-            mdinput.required = true;
-        } else {
-            super.RenderHTMLAttribute(element, renderer, mdinput);
-        }
-    }
+    // public RenderHTMLAttribute(element: HTMLInputElement)
+    // public RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer)
+    // public RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer, mdinput: MdInputDirective)
+    // public RenderHTMLAttribute(element: HTMLInputElement, renderer?: AttributeRenderer, mdinput?: MdInputDirective): void {
+    //     if (!!mdinput) {
+    //         mdinput.required = true;
+    //     } else {
+    //         super.RenderHTMLAttribute(element, renderer, mdinput);
+    //     }
+    // }
 }
 
 /**

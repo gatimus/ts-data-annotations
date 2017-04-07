@@ -1,11 +1,12 @@
-export interface _StringLengthAttribute {
+import { _ValidationAttribute, ValidationAttribute } from './validation.attribute';
+export interface _StringLengthAttribute extends _ValidationAttribute {
     MaximumLength?: number;
     MinimumLength?: number;
 }
 /**
  * Validation attribute to assert a string property, field or parameter does not exceed a maximum length
  */
-export declare class StringLengthAttribute {
+export declare class StringLengthAttribute extends ValidationAttribute {
     /**
      * Gets the maximum acceptable length of the string
      */

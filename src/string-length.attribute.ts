@@ -1,5 +1,6 @@
+import { _ValidationAttribute, ValidationAttribute } from './validation.attribute';
 
-export interface _StringLengthAttribute {
+export interface _StringLengthAttribute extends _ValidationAttribute {
     MaximumLength?: number;
     MinimumLength?: number;
 }
@@ -7,7 +8,7 @@ export interface _StringLengthAttribute {
 /**
  * Validation attribute to assert a string property, field or parameter does not exceed a maximum length
  */
-export class StringLengthAttribute {
+export class StringLengthAttribute extends ValidationAttribute {
 
     /**
      * Gets the maximum acceptable length of the string
@@ -24,6 +25,7 @@ export class StringLengthAttribute {
      * @param maximumLength The maximum length, inclusive.  It may not be negative.
      */
     constructor(maximumLength: number) {
+        super();
         this.MaximumLength = maximumLength;
     }
 

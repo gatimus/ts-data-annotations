@@ -1,5 +1,5 @@
-import { ValidationAttribute } from './validation.attribute';
-export interface _CompareAttribute {
+import { _ValidationAttribute, ValidationAttribute } from './validation.attribute';
+export interface _CompareAttribute extends _ValidationAttribute {
     OtherProperty?: string;
     OtherPropertyDisplayName?: string;
 }

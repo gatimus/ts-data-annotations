@@ -1,8 +1,8 @@
 import { MdInputDirective } from '@angular/material';
 import { parseCSParameters } from './parse-cs-parameters';
-import { ValidationAttribute, AttributeRenderer } from './validation.attribute';
+import { _ValidationAttribute, ValidationAttribute, AttributeRenderer } from './validation.attribute';
 
-export interface _MaxLengthAttribute {
+export interface _MaxLengthAttribute extends _ValidationAttribute {
     Length?: number;
 }
 
@@ -10,16 +10,14 @@ export interface _MaxLengthAttribute {
  * Specifies the maximum length of array/string data allowed in a property.
  */
 export class MaxLengthAttribute extends ValidationAttribute {
+
     private readonly MaxAllowableLength: number = -1;
+
     /**
      * Gets the maximum allowable length of the array/string data.
      */
-    public get Length(): number {
-        return this.value;
-    };
-    public set Length(length: number) {
-        this.value = length;
-    };
+    public Length: number;
+    
     /**
      * Initializes a new instance of the MaxLengthAttribute class.
      * The maximum allowable length supported by the database will be used.
@@ -30,16 +28,16 @@ export class MaxLengthAttribute extends ValidationAttribute {
      */
     constructor(length: number)
     constructor(length?: number) {
-        super('maxlength', length);
+        super();
         this.Length = length == null ? this.MaxAllowableLength : length;
     }
-    public RenderHTMLAttribute(element: HTMLInputElement)
-    public RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer)
-    public RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer, mdinput: MdInputDirective)
-    public RenderHTMLAttribute(element: HTMLInputElement, renderer?: AttributeRenderer, mdinput?: MdInputDirective): void {
-        if (!renderer) renderer = this.defaultRenderer;
-        renderer.setElementAttribute(element, this.attribute, this.value);
-    }
+    // public RenderHTMLAttribute(element: HTMLInputElement)
+    // public RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer)
+    // public RenderHTMLAttribute(element: HTMLInputElement, renderer: AttributeRenderer, mdinput: MdInputDirective)
+    // public RenderHTMLAttribute(element: HTMLInputElement, renderer?: AttributeRenderer, mdinput?: MdInputDirective): void {
+    //     if (!renderer) renderer = this.defaultRenderer;
+    //     renderer.setElementAttribute(element, this.attribute, this.value);
+    // }
 }
 
 export function MaxLength()
