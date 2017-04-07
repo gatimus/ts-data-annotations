@@ -50,7 +50,7 @@ namespace Models
 }
 ```
 
-```tst
+```cs
 // models.tst
 ${
 
